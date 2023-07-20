@@ -9,7 +9,7 @@ Die grafische Nutzeroberfläche hat hierbei die Aufgabe, diese Funktionen in ein
 
 ## Verwendung
 
-![Erster Tab]( ./src/images/tab1.png )
+![Erster Tab]( ./src/images/tab1.png | width=200)
 
 
 
