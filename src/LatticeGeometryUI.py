@@ -796,7 +796,7 @@ class LatticeGeometryUI(ctk.CTk):
 
         self.unified_frame_label = StepTitle(
             master = self.workflow_tabview.tab("    5    "),
-            text = " Vereinigung des Gitters mit dem Eingangsmodell",
+            text = " Vereinigung des Gitters mit der Schalengeometrie",
             width = 46,
             appearance = self.appearance,
             row = ( 0, 1 ),
