@@ -1,0 +1,5 @@
+['var', {'name': 'd', 'value': 1. }],
+[1, 7, {'diameter': 'd' }],
+[4, 8, {'diameter': 'd' }],
+[3, 5, {'diameter': 'd' }],
+[2, 6, {'diameter': 'd' }]
