@@ -1,7 +1,7 @@
 import PIL.Image
 import customtkinter as ctk
 from latticegeometrylib.Generator import LatticeGenerator as LatticeGeometryLib
-from View import CellViewer, GridViewer
+from View import CellViewer, LatticeViewer
 import webbrowser
 import os
 from tkinter import filedialog as fd
@@ -411,9 +411,9 @@ class LatticeGeometryUI(ctk.CTk):
         self.cell_initialize_label_spacing.grid(row=0, column=0, columnspan=2, padx=self.appearance.spacing,
                                                      pady=self.appearance.spacing)
 
-        self.cell_initialize_canvas = GridViewer(widget=self.cell_initialize_represent_frame,
-                                             width=28 * self.appearance.spacing,
-                                             height=28 * self.appearance.spacing)
+        self.cell_initialize_canvas = LatticeViewer(widget=self.cell_initialize_represent_frame,
+                                                    width=28 * self.appearance.spacing,
+                                                    height=28 * self.appearance.spacing)
         self.cell_initialize_canvas.get_tk_widget().grid(row=0, column=0, padx=self.appearance.spacing,
                                                      pady=self.appearance.spacing)
 

@@ -158,7 +158,7 @@ class CellViewer(FigureCanvasTkAgg):
         self.figure.canvas.draw()
 
 
-class GridViewer(FigureCanvasTkAgg):
+class LatticeViewer(FigureCanvasTkAgg):
     def __init__(self, widget, width, height):
         self.dpi = get_ppi()
 
