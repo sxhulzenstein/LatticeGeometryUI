@@ -412,8 +412,10 @@ class LatticeGeometryUI(ctk.CTk):
                                                      pady=self.appearance.spacing)
 
         self.cell_initialize_canvas = LatticeViewer(widget=self.cell_initialize_represent_frame,
-                                                    width=28 * self.appearance.spacing,
-                                                    height=28 * self.appearance.spacing)
+                                                    width=20 * self.appearance.spacing / self.appearance.width,
+                                                    height=20 * self.appearance.spacing / self.appearance.height,
+                                                    winwidth=self.winfo_width(),
+                                                    winheight=self.winfo_height())
         self.cell_initialize_canvas.get_tk_widget().grid(row=0, column=0, padx=self.appearance.spacing,
                                                      pady=self.appearance.spacing)
 
@@ -623,8 +625,10 @@ class LatticeGeometryUI(ctk.CTk):
         self.cell_config_model_represent_label.grid(row=0, column=0, padx=self.appearance.spacing, pady=self.appearance.spacing)
 
         self.cell_config_canvas = CellViewer( widget=self.cell_config_represent_frame,
-                                              width= 28* self.appearance.spacing,
-                                              height=28 *self.appearance.spacing )
+                                              width= 21 * self.appearance.spacing / self.appearance.width,
+                                              height=21 * self.appearance.spacing / self.appearance.height,
+                                              winwidth = self.winfo_width(),
+                                              winheight = self.winfo_height())
         self.cell_config_canvas.get_tk_widget().grid(row=0, column=0, padx=self.appearance.spacing, pady=self.appearance.spacing)
 
         self.cell_config_generic_entrybox_frame = ctk.CTkFrame(
@@ -1192,6 +1196,7 @@ class LatticeGeometryUI(ctk.CTk):
         self.progress()
 
     def onDeleteCell(self):
+        print(self.winfo_width(), self.winfo_height())
         self.progress(True)
         self.lib.delete_unitary_cell()
         self.notify("[info]", "Einheitszelle erfolgreich gelöscht")

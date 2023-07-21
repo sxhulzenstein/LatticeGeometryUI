@@ -6,12 +6,16 @@ from latticegeometrylib.Miscellaneous import Size, Periodicity
 from ctypes import windll
 import cadquery as cq
 from latticegeometrylib.CellConfiguration import CellConfiguration
+from tkinter import Tk
 
 
 class CellViewer(FigureCanvasTkAgg):
-    def __init__(self, widget, width, height):
-        self.dpi = get_ppi()
-        self.figure, self.axes = pyplot.subplots(nrows=2, ncols=1, figsize=(width / self.dpi, height / self.dpi),
+    def __init__(self, widget, width, height, winwidth, winheight):
+
+        w = winwidth * width
+        h = winheight * height
+        self.dpi = 100
+        self.figure, self.axes = pyplot.subplots(nrows=2, ncols=1, figsize=(w / self.dpi, h / self.dpi),
                                                  dpi=self.dpi, subplot_kw={'projection': '3d'},
                                                  gridspec_kw={'height_ratios': [3, 1]})
         FigureCanvasTkAgg.__init__(self, master=widget,figure=self.figure)
@@ -159,10 +163,11 @@ class CellViewer(FigureCanvasTkAgg):
 
 
 class LatticeViewer(FigureCanvasTkAgg):
-    def __init__(self, widget, width, height):
-        self.dpi = get_ppi()
-
-        self.figure, self.axes = pyplot.subplots( nrows=1, ncols=2, figsize=(width/self.dpi, height/self.dpi),
+    def __init__(self, widget, width, height, winwidth, winheight):
+        self.dpi = 100
+        w = width * winwidth
+        h = height * winheight
+        self.figure, self.axes = pyplot.subplots( nrows=1, ncols=2, figsize=(w/self.dpi, h/self.dpi),
                                      dpi=self.dpi, subplot_kw={'projection':'3d'}, gridspec_kw={'width_ratios':[3,1]})
 
         FigureCanvasTkAgg.__init__(self, master=widget,figure=self.figure)
@@ -244,5 +249,13 @@ class LatticeViewer(FigureCanvasTkAgg):
         self.axes[0].set_box_aspect(aspect=(1, 1, 1))
         self.axes[0].set_axis_off()
 
+"""
 def get_ppi():
     return windll.user32.GetDpiForSystem()
+"""
+
+def get_ppi():
+    screen = Tk()
+    current_dpi = screen.winfo_fpixels('1i')
+    screen.destroy()
+    return current_dpi
